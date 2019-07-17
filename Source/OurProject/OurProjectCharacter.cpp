@@ -144,7 +144,7 @@ void AOurProjectCharacter::BeginPlay() {
 }
 
 void AOurProjectCharacter::SprintStart() {
-	GetCharacterMovement()->MaxWalkSpeed = PlayerSpeed * 5;
+	GetCharacterMovement()->MaxWalkSpeed = PlayerSpeed *   2;
 	IsSprinting = true;
 }
 
@@ -165,9 +165,13 @@ void AOurProjectCharacter::Tick(float DeltaTime) {
 	}
 	else {
 		if (CurrentStamina < MaxStamina) {
-
+			CurrentStamina = CurrentStamina + DeltaTime;
 			
 		}
-		CurrentStamina = CurrentStamina + DeltaTime;
+		else {
+			if (CurrentStamina > MaxStamina) {
+				CurrentStamina = MaxStamina;
+			}
+		}
 	}
 }
